@@ -1,0 +1,254 @@
+{
+    "custom/first": {
+        "format": " ",
+        "tooltip": false
+    },
+    "custom/last": {
+        "format": " ",
+        "tooltip": false
+    },
+    "hyprland/window": {
+        "format": "{}"
+    },
+    "wlr/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "all-outputs": false,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            // "1": "",
+            // "2": "",
+            // "3": "",
+            // "4": "",
+            // "5": "",
+            // "urgent": "",
+            "urgent": "﫜",
+            // "active": "",
+            "active": "",
+            // "default": ""
+            "default": "",
+            "sort-by-number": true
+        }
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " {}%",
+        // "max-length": 10,
+        "on-click": "kitty -e bashtop"
+    },
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "format-alt": " {used:0.1f}G"
+        // "max-length": 10,
+        // "on-click": "kitty -e bashtop"
+    },
+    "custom/updates": {
+        "format": " {}",
+        // "exec": "(checkupdates) | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 3600,
+        "on-click": "kitty -e yay -Syu && notify-send 'The system has been updated'; pkill -SIGRTMIN+8 waybar",
+        "tooltip": true,
+        "exec": "jq -n -c --arg c $(checkupdates | wc -l) --arg p \"$(checkupdates)\" '{\"text\": $c, \"tooltip\": $p}'",
+        "return-type": "json",
+        "signal": 8
+    },
+    // "custom/language": {
+    //     "exec": "cat /tmp/kb_layout",
+    //     "interval": 3,
+    //     "format": " {}",
+    //     "tooltip": false
+    // },
+    // "custom/weather": {
+    //     "tooltip": true,
+    //     "format": "{}",
+    //     "restart-interval": 300,
+    //     "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+    //     "return-type": "json"
+    // },
+    "tray": {
+        "icon-size": 13,
+        "tooltip": false,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{: %R}",
+        // "format-alt": "{: %d/%m}",
+        "format-alt": "{:%R %d/%m}",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
+        "tooltip-format": "<tt><big> {calendar}</big></tt>"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "婢 {icon}  {format_source}",
+        "format-muted": "{volume}% 婢 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "{volume}% ",
+        "format-icons": {
+            "headphone": "",
+            // "hands-free": "",
+            "hands-free": "",
+            // "headset": "",
+            "headset": "",
+            "phone": "",
+            "portable": "ﴓ",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        //  On click, the module will toggle the mute state
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+    // "network": {
+    //     // "interface": "wlp2*", // (Optional) To force the use of this interface
+    //     "format-wifi": "{essid} ({signalStrength}%) ",
+    //     "format-ethernet": "Connected  ",
+    //     "tooltip-format": "{ifname} via {gwaddr} ",
+    //     "format-linked": "{ifname} (No IP) ",
+    //     "format-disconnected": "Disconnected ⚠",
+    //     // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    //     "on-click": "bash $HOME/.config/rofi/scripts/rofi_wifi_menu",
+    //     "on-click-right": "nm-connection-editor"
+    // },
+    "network": {
+        "format-wifi": "<span color=\"#C778DD\">直</span> {essid}",
+        "format-ethernet": "<span color=\"#C778DD\"></span> {ifname}",
+        "format-linked": "<span color=\"#C778DD\"></span> {ifname}",
+        /* "format-disconnected": " Disconected", */
+        "format-disconnected": "睊 Disconected",
+        "family": "ipv4",
+        "tooltip-format-wifi": "直 {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}",
+        "on-click": "bash $HOME/.config/rofi/scripts/rofi_wifi_menu",
+        "on-click-right": "nm-connection-editor"
+    },
+    "backlight": {
+        // "device":  "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        // "format-icons": [
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     ""
+        // ]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "temperature": {
+        "format": " {}°C",
+        "interval": 10,
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C "
+    },
+    "bluetooth": {
+        // "controller":  "controller1", //  specify the alias of the control ler if there are more than 1 on the system
+        "format": " {status}",
+        "format-disabled": "", // an empty format  will hide the module
+        "format-c onnected": " {num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+    "custom/power": {
+        // "format": "",
+        "format": "",
+        "tooltip": true,
+        "on-click": "bash $HOME/.config/rofi/scripts/rofi_powermenu",
+        "exec": "uptime -p | xargs -i echo '{\"tooltip\": \"{}\"}'",
+        "return-type": "json"
+    },
+    "custom/notification": {
+        "tooltip": true,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "[[ which swaync-client ]]",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "mpris": {
+        "format": "{player_icon}",
+        "format-paused": "{status_icon}",
+        "player-icons": {
+            "default": "淪",
+            "mpv": "🎵淪"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        // "ignored-players": ["firefox"]
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        // "icon-size": 14,
+        // "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        // "ignore-list": [
+        //     "Alacritty"
+        // ],
+        "app_ids-mapping": {
+            "firefoxdeveloperedition": "firefox-developer-edition"
+        }
+    }
+}

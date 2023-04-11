@@ -1,0 +1,40 @@
+{
+    "include": "~/.config/waybar/modules.jsonc",
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passtrough": true,
+    "gtk-layer-shell": true,
+    "height": 0,
+    "fixed-center": false,
+    // modules
+    "modules-left": [
+        "wlr/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "custom/first",
+        // "tray",
+        "cpu",
+        "memory",
+        "temperature",
+        // "network",
+        // "bluetooth",
+        // "custom/language",
+        "custom/updates",
+        "backlight",
+        // "mpris",
+        "pulseaudio",
+        "tray",
+        "custom/notification",
+        "battery",
+        "battery#bat2",
+        "clock",
+        "custom/power",
+        "custom/last"
+    ]
+}
