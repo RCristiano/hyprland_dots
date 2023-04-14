@@ -226,15 +226,20 @@
         "escape": true
     },
     "mpris": {
-        "format": "{player_icon}",
-        "format-paused": "{status_icon}",
+        "format": " {player_icon} {status_icon} ",
+        "format-paused": " {player_icon} {status_icon} ",
         "player-icons": {
-            "default": "淪",
-            "mpv": "🎵淪"
+            "default": "",
+            "mpv": "",
+            "firefox": " ",
+            "vlc": "嗢",
+            "spotify": ""
         },
         "status-icons": {
-            "paused": "⏸"
-        },
+            "paused": "",
+            "playing": "",
+            "stopped": ""
+        }
         // "ignored-players": ["firefox"]
     },
     "wlr/taskbar": {
