@@ -75,29 +75,15 @@
         ]
     },
     "custom/updates": {
-        "format": " {}",
-        // "exec": "(checkupdates) | wc -l",
-        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "format": " {}",
+        "exec-if": "[[ checkupdates && $(yay -Qu | wc -l) != 0 ]]",
         "interval": 3600,
-        "on-click": "kitty -e yay -Syu && notify-send 'The system has been updated'; pkill -SIGRTMIN+8 waybar",
+        "on-click": "kitty -e $SHELL -c 'yay -Syu; read -q' && [[ $(yay -Qu | wc -l) == 0 ]] && notify-send -i emblem-success 'Success' 'The system has been updated'; pkill -SIGRTMIN+8 waybar",
         "tooltip": true,
-        "exec": "jq -n -c --arg c $(checkupdates | wc -l) --arg p \"$(checkupdates)\" '{\"text\": $c, \"tooltip\": $p}'",
+        "exec": "jq -n -c --arg c $(yay -Qu | wc -l) --arg p \"$(yay -Qu)\" '{\"text\": $c, \"tooltip\": $p}'",
         "return-type": "json",
         "signal": 8
     },
-    // "custom/language": {
-    //     "exec": "cat /tmp/kb_layout",
-    //     "interval": 3,
-    //     "format": " {}",
-    //     "tooltip": false
-    // },
-    // "custom/weather": {
-    //     "tooltip": true,
-    //     "format": "{}",
-    //     "restart-interval": 300,
-    //     "exec": "~/.config/waybar/scripts/waybar-wttr.py",
-    //     "return-type": "json"
-    // },
     "tray": {
         "icon-size": 13,
         "tooltip": false,
