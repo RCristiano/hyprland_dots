@@ -85,7 +85,7 @@
           },
           {
             "label": "   Lock",
-            "command": "swaylock.sh"
+            "command": "swaylock && sleep 1 && hyprctl dispatch dpms off"
           },
           {
             "label": "   Logout",
