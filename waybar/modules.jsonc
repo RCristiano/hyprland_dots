@@ -269,7 +269,32 @@
             "playing": "",
             "stopped": ""
         }
-        // "ignored-players": ["firefox"]
+    },
+    "custom/media_play": {
+        "escape": true,
+        "format": "{icon}",
+        "return-type": "json",
+        "format-icons": {
+            "paused": "喇",
+            "playing": ""
+        },
+        "exec": "playerctl metadata --format '{\"text\": \"{{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{lc(status)}}\", \"class\": \"{{lc(status)}}\"}' -F",
+        "on-click": "playerctl play-pause",
+        "exec-if": "[[ $(playerctl --list-all) ]]"
+    },
+    "custom/media_next": {
+        "format": "怜",
+        "return-type": "json",
+        "on-click": "playerctl next",
+        "exec": "playerctl metadata --format '{\"tooltip\": \"{{playerName}} : {{title}}\"}' -F",
+        "exec-if": "[[ $(playerctl --list-all) ]]"
+    },
+    "custom/media_prev": {
+        "format": "玲",
+        "return-type": "json",
+        "exec": "playerctl metadata --format '{\"tooltip\": \"{{playerName}} : {{title}}\"}' -F",
+        "on-click": "playerctl previous",
+        "exec-if": "[[ $(playerctl --list-all) ]]"
     },
     "wlr/taskbar": {
         "format": "{icon}",

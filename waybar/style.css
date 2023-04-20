@@ -74,6 +74,9 @@ tooltip {
 #custom-caffeine,
 #custom-weather,
 #custom-power,
+#custom-media_prev,
+#custom-media_play,
+#custom-media_next,
 #custom-notification,
 #custom-first,
 #custom-last,
@@ -91,6 +94,21 @@ tooltip {
     background: #332E41;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+#custom-media_prev,
+#custom-media_play,
+#custom-media_next {
+    padding: 0px 5px 0px 3px;
+    background: #423d52;
+	border-width: 2px 0px 2px 0px;
+	border-style: solid;
+	border-color: #332E41;
+}
+
+#custom-media_prev,
+#custom-media_next {
+    padding-left: 5px;
 }
 
 #custom-first,
