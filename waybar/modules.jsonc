@@ -17,17 +17,9 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            // "1": "",
-            // "2": "",
-            // "3": "",
-            // "4": "",
-            // "5": "",
-            // "urgent": "",
             "urgent": "﫜",
-            // "active": "",
-            "active": "",
-            // "default": ""
-            "default": "",
+            "active": "綠",
+            "default": "祿",
             "sort-by-number": true
         }
     },
@@ -87,28 +79,24 @@
     "tray": {
         "icon-size": 13,
         "tooltip": false,
-        "spacing": 10
+        "spacing": 10,
+        "show-passive-items": true
     },
     "clock": {
-        "format": "{: %R}",
-        // "format-alt": "{: %d/%m}",
-        "format-alt": "{:%R %d/%m}",
-        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>"
+        "format-alt": "{: %R}",
+        "format": " {:%R %d/%m} ",
         "tooltip-format": "<tt><big> {calendar}</big></tt>"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon}  {format_source}",
-        "format-bluetooth-muted": "婢 {icon}  {format_source}",
-        "format-muted": "{volume}% 婢 {format_source}",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": "婢 {icon} ",
+        "format-muted": "{volume}% 婢",
         "format-source": "{volume}% ",
         "format-source-muted": "{volume}% ",
         "format-icons": {
             "headphone": "",
-            // "hands-free": "",
             "hands-free": "",
-            // "headset": "",
             "headset": "",
             "phone": "",
             "portable": "ﴓ",
@@ -119,26 +107,13 @@
                 ""
             ]
         },
-        //  On click, the module will toggle the mute state
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol"
     },
-    // "network": {
-    //     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    //     "format-wifi": "{essid} ({signalStrength}%) ",
-    //     "format-ethernet": "Connected  ",
-    //     "tooltip-format": "{ifname} via {gwaddr} ",
-    //     "format-linked": "{ifname} (No IP) ",
-    //     "format-disconnected": "Disconnected ⚠",
-    //     // "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    //     "on-click": "bash $HOME/.config/rofi/scripts/rofi_wifi_menu",
-    //     "on-click-right": "nm-connection-editor"
-    // },
     "network": {
         "format-wifi": "<span color=\"#C778DD\">直</span> {essid}",
         "format-ethernet": "<span color=\"#C778DD\"></span> {ifname}",
         "format-linked": "<span color=\"#C778DD\"></span> {ifname}",
-        /* "format-disconnected": " Disconected", */
         "format-disconnected": "睊 Disconected",
         "family": "ipv4",
         "tooltip-format-wifi": "直 {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n⬆️ {bandwidthUpBits} ⬇️ {bandwidthDownBits}",
@@ -147,7 +122,6 @@
         "on-click-right": "nm-connection-editor"
     },
     "backlight": {
-        // "device":  "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": [
             "",
@@ -203,17 +177,17 @@
         ]
     },
     "bluetooth": {
-        // "controller":  "controller1", //  specify the alias of the control ler if there are more than 1 on the system
-        "format": " {status}",
-        "format-disabled": "", // an empty format  will hide the module
-        "format-c onnected": " {num_connections} connected",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "format": "",
+        "format-on": "",
+        "format-connected": " {num_connections}",
+        "format-connected-battery": " {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
         "on-click": "blueman-manager"
     },
     "custom/power": {
-        // "format": "",
         "format": "",
         "tooltip": true,
         "on-click": "bash $HOME/.config/rofi/scripts/rofi_powermenu",
@@ -241,12 +215,12 @@
         "escape": true
     },
     "mpris": {
-        "format": " {player_icon} {status_icon} ",
-        "format-paused": " {player_icon} {status_icon} ",
+        "format": " {player_icon} {status_icon} ",
+        "format-paused": " {player_icon} {status_icon} ",
         "player-icons": {
             "default": "",
             "mpv": "",
-            "firefox": " ",
+            "firefox": "",
             "vlc": "嗢",
             "spotify": ""
         },
@@ -284,14 +258,10 @@
     },
     "wlr/taskbar": {
         "format": "{icon}",
-        // "icon-size": 14,
-        // "icon-theme": "Numix-Circle",
+        "icon-theme": "Hack",
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
-        // "ignore-list": [
-        //     "Alacritty"
-        // ],
         "app_ids-mapping": {
             "firefoxdeveloperedition": "firefox-developer-edition"
         }
