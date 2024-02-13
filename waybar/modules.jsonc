@@ -24,7 +24,7 @@
         }
     },
     "cpu": {
-        "interval": 10,
+        "interval": 100,
         "format-alt": " {}",
         "format": " {icon}",
         "on-click-right": "kitty -e bashtop",
@@ -45,7 +45,7 @@
         ]
     },
     "memory": {
-        "interval": 30,
+        "interval": 300,
         "states": {
             "good": 0,
             "warning": 45,
@@ -164,7 +164,7 @@
     },
     "temperature": {
         "format": "{icon} {}糖",
-        "interval": 10,
+        "interval": 100,
         "critical-threshold": 70,
         "format-critical": " {temperatureC}糖",
         "tooltip": false,
