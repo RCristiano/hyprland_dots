@@ -10,7 +10,7 @@
     "hyprland/window": {
         "format": "{}"
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "all-outputs": false,
@@ -159,11 +159,8 @@
             ""
         ]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "temperature": {
-        "format": "{icon} {}糖",
+        "format": "{icon} {0}糖",
         "interval": 100,
         "critical-threshold": 70,
         "format-critical": " {temperatureC}糖",
